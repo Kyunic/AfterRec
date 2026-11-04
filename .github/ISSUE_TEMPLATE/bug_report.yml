@@ -1,0 +1,29 @@
+name: Bug / reproducibility failure
+about: Report a verified defect with steps to reproduce
+labels: [bug]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Problem and expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: State dataset fixture, model ID, random seed and exact command.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior and evidence
+      description: Sanitized logs only; never paste API keys or user data.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Scientific or cross-module impact
+      description: Does this affect metrics, ID mapping, model states or API compatibility?

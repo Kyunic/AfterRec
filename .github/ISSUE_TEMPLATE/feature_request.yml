@@ -1,0 +1,50 @@
+name: Module task / feature
+about: A scoped, testable development task for RecForgetBench
+labels: [enhancement]
+body:
+  - type: dropdown
+    id: module
+    attributes:
+      label: Module
+      options:
+        - A - Dataset and recommendation
+        - B - Unlearning and evaluation
+        - C - Web and integration
+        - Shared contract
+        - Research simulation protocol
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: Observable goal
+      description: Describe the feature in terms of what a tester can see or verify.
+      placeholder: After loading the saved model, a user ID returns a real Top-10 recommendation.
+    validations:
+      required: true
+  - type: textarea
+    id: boundaries
+    attributes:
+      label: Allowed files and dependencies
+      description: Which module is owned and which upstream interface is needed?
+    validations:
+      required: true
+  - type: textarea
+    id: criteria
+    attributes:
+      label: Acceptance criteria and test data
+      description: List concrete checks, including correctness and negative tests.
+    validations:
+      required: true
+  - type: textarea
+    id: deliverables
+    attributes:
+      label: Expected deliverables and demo
+      description: PR, tests, report, documentation, page, or runnable demonstration.
+    validations:
+      required: true
+  - type: input
+    id: estimate
+    attributes:
+      label: Estimated effort / milestone
+      placeholder: 3 working days, P1

@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  python-quality:
+    name: Python tests and contracts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install foundation + test dependencies
+        run: python -m pip install -e '.[dev]'
+      - name: Lint
+        run: ruff check backend tests scripts
+      - name: Unit and contract tests
+        run: python -m pytest -q
+      - name: Validate repository structure
+        run: python scripts/verify_scaffold.py
+
+  web-prototype:
+    name: Offline prototype syntax
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate HTML and embedded JavaScript
+        run: python scripts/check_frontend.py
