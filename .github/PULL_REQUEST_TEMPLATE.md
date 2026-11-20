@@ -1,12 +1,12 @@
 ## What changed
 
 - Linked Issue: #
-- Primary module owner: A / B / C
+- Affected modules:
 - Scope and observable result:
 
 ## Interface and research checks
 
-- [ ] Changes are confined to owned paths, or shared-path approval was obtained.
+- [ ] Changes are scoped to relevant modules and shared interfaces are coordinated.
 - [ ] Cross-module schemas/docs updated if an interface changed.
 - [ ] No train/test leakage, changed ID maps, or silent evaluation-protocol drift.
 - [ ] Original / Retrain / Unlearned remain clearly distinguished where relevant.
