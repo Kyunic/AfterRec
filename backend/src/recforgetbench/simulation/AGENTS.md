@@ -1,8 +1,7 @@
-# Agent runtime (Student C + Research Lead)
+# Agent simulation runtime
 
-- This folder owns execution infrastructure, NOT new scientific agent algorithms.
-- Do not change persona construction, psychology, memory semantics, or residual-
-  association metrics without approval from the Research Lead.
+- This folder owns execution infrastructure and pluggable agent policies.
+- Document and test changes to persona construction, memory semantics or perceived-association metrics in the research protocol.
 - Pass forgetting intent to the simulated user agent, not the recommender in the
   data-unlearning-only condition.
 - Agent can act only on exposed items. Reject invalid action targets.

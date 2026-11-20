@@ -1,8 +1,8 @@
-# RecForgetBench — shared instructions for all coding agents
+# AfterRec: repository-wide development guidance
 
 These rules apply to Codex, Claude Code (via `CLAUDE.md`), and human contributors.
 **Read** `README.md`, `docs/architecture/OVERVIEW.md`, `docs/contracts/INTERFACES.md`,
-`docs/team/OWNERSHIP.md`, and the Issue you are working on before editing.
+and the Issue you are working on before editing.
 If your module has a nested `AGENTS.md`, follow it as well.
 
 ## Mission and phase
@@ -32,26 +32,24 @@ are implemented merely because APIs or demo screens exist.
 10. The simulated user's forgetting intent is accessible to the user agent, not
     silently injected into the base recommender in the data-unlearning-only condition.
 
-## Ownership and change boundaries
+## Module boundaries and shared changes
 
-- Student A: `backend/src/recforgetbench/{datasets,recsys}/`
-- Student B: `backend/src/recforgetbench/{unlearning,evaluation}/`
-- Student C: `backend/src/recforgetbench/api/`, `frontend/`, integration scripts
-- Research Lead: scientific specification in `docs/research/` and agent algorithm design
-- Shared paths: `backend/src/recforgetbench/{core,simulation}/`, `docs/contracts/`,
-  `pyproject.toml`, `.github/`, and root agent instructions.
+- `datasets/` owns ingestion, metadata, splits and ID mappings.
+- `recsys/` owns recommendation adapters, training and inference.
+- `unlearning/` owns forgetting methods and retraining.
+- `evaluation/` owns metric definitions and evaluations.
+- `simulation/` owns the controlled runtime and agent-policy integration.
+- `api/` and `frontend/` own orchestration and presentation.
+- `core/`, public contracts, dependencies and CI are shared interfaces.
 
-Shared paths require a cross-module Issue discussion and at least one affected
-module owner to confirm the interface change. Student C coordinates integration;
-this is not permission to rewrite other students' algorithms. No agent may claim
-unilateral authority to change the project's scope, ownership, or evaluation protocol.
+Propose changes to shared contracts in an Issue, document affected consumers and update tests in the same PR. Avoid unrelated changes to other modules.
 
 ## Work protocol — ONE issue, ONE small branch, ONE focused PR
 
 1. Restate the Issue goal, acceptance tests, allowed paths, affected contracts,
-   and assumptions before editing. Clarify material ambiguity with your student owner.
+   and assumptions before editing. Clarify material ambiguity in the Issue.
 2. Inspect existing contracts and implementations. Prefer the smallest change.
-3. Modify only the assigned module and tests. Do not opportunistically rewrite code.
+3. Modify only the relevant module and tests. Do not opportunistically rewrite code.
 4. Public contract changes: update `docs/contracts/INTERFACES.md`, tests and API
    types **in the same PR**, and flag them clearly in the PR description.
 5. Add deterministic tests for each meaningful behavior change, including negative
@@ -61,8 +59,8 @@ unilateral authority to change the project's scope, ownership, or evaluation pro
    if installed. Report commands and results, do not claim tests you did not run.
 7. Create a PR using `.github/PULL_REQUEST_TEMPLATE.md`. Include demo evidence,
    how it was tested, known limitations and whether outputs are simulated.
-8. Never commit directly to `main`, force-push shared branches, delete unrelated
-   work, edit `.gitignore` to expose secrets, or merge your own unverified changes.
+8. Do not force-push shared branches, delete unrelated work, expose secrets,
+   or merge unverified changes.
 
 ## Security and privacy
 

@@ -1,4 +1,4 @@
-# Evaluation module (Student B)
+# Evaluation module
 
 - Report ranking protocol, population, exclusion rules, k, and aggregation policy.
 - A small hand-checkable fixture is required for every numerical metric.

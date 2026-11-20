@@ -1,7 +1,6 @@
-# Shared module interfaces (v0.1 — initial agreement)
+# Shared module interfaces (v0.1)
 
-**Owners:** Students A/B/C jointly. **Change protocol:** change proposal Issue,
-updated schema, consumers notified, updated tests, PR describing migration.
+**Changes:** Propose interface updates in an Issue. Update the schema, affected consumers, tests and migration notes in the same PR.
 
 ## Shared identifiers and lineage
 
@@ -12,7 +11,7 @@ implementation details. Keep the mapping with each model artifact.
 The concrete typed objects are in `recforgetbench.core.contracts` and
 `recforgetbench.simulation.contracts`.
 
-## Dataset and split (A -> B)
+## Dataset and split
 
 - `DatasetRef`: dataset ID + version + optional metadata location.
 - `SplitRef`: immutable paths to train, validation and test interaction manifests,
@@ -22,7 +21,7 @@ The concrete typed objects are in `recforgetbench.core.contracts` and
 - Invariants: no overlap across train/validation/test; train = retain ∪ forget;
   no validation/test item accidentally enters the forget set.
 
-## Recommendation (A -> B, C)
+## Recommendation
 
 `Recommender.train(dataset, split, config) -> ModelArtifact`
 
@@ -39,7 +38,7 @@ When a session adapter is added, distinguish **base** scores from displayed
 A real implementation must define seen-item masking, candidate catalogue,
 unknown-user behavior, model version, and deterministic ranking tie-break rules.
 
-## Unlearning (A -> B -> C)
+## Unlearning
 
 `UnlearningMethod.is_compatible(model_name) -> bool`
 
@@ -49,14 +48,14 @@ Retrain is a *new training run* from fresh initialization using retained
 training interactions. Some other algorithms require special preparation at
 original training time; the contract may be extended with a prepare phase.
 
-## Evaluation (B -> C)
+## Evaluation
 
 Each result must specify original model, comparison model, split, forget request,
 metric name, K, ranking protocol, filtering and aggregation; include runtime
 and provenance metadata. No fabricated placeholder metric may share a namespace
 with a measured metric.
 
-## Simulation (Research Lead -> C; A provides model)
+## Simulation
 
 `AgentObservation`: user ID, step, persona, forgetting intent, displayed items,
 **prior executed actions only**.
@@ -81,5 +80,5 @@ The following are **planned**, not working endpoints:
 - `POST /api/v1/evaluation-runs`
 - `POST /api/v1/simulation-runs`
 
-The owning teams should implement route models and validation through Pydantic,
+Implement route models and validation through Pydantic,
 not invent API payloads independently in the front end.

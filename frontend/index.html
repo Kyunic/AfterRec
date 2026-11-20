@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <meta name="description" content="推荐系统 Unlearning × LLM Agent 评测平台——可离线运行的项目功能与架构交互演示">
-  <title>RecForgetBench｜推荐系统 Unlearning × LLM Agent 评测平台</title>
+  <title>AfterRec｜推荐系统 Unlearning × LLM Agent 评测平台</title>
   <style>
     :root{
       --bg:#f4f6f7;--surface:#fff;--surface2:#f8fafb;--ink:#162a36;--ink2:#304451;
@@ -72,7 +72,7 @@
 <div class="mobile-overlay" id="mobileOverlay"></div>
 <div class="app">
  <aside class="sidebar" id="sidebar">
-  <div class="brand"><div class="brand-symbol"><svg width="23" height="23"><use href="#i-mark"></use></svg></div><div><strong>RecForgetBench</strong><small>RESEARCH PLATFORM</small></div></div>
+  <div class="brand"><div class="brand-symbol"><svg width="23" height="23"><use href="#i-mark"></use></svg></div><div><strong>AfterRec</strong><small>RESEARCH PLATFORM</small></div></div>
   <nav aria-label="页面导航">
    <div class="nav-group"><div class="nav-label">项目设计</div>
     <button class="nav-btn active" data-page="overview"><svg><use href="#i-home"></use></svg> 项目总览</button>
@@ -83,21 +83,21 @@
     <button class="nav-btn" data-page="demo"><svg><use href="#i-play"></use></svg> 实验流程演示</button>
    </div>
    <div class="nav-group"><div class="nav-label">项目推进</div>
-    <button class="nav-btn" data-page="team"><svg><use href="#i-team"></use></svg> 团队分工与协作</button>
+    
     <button class="nav-btn" data-page="roadmap"><svg><use href="#i-route"></use></svg> 开发路线图</button>
    </div>
   </nav>
-  <div class="sidebar-bottom"><div class="side-note"><div class="mono">PROTOTYPE / 0.1</div><p>这是用于团队沟通的交互原型。所有训练结果、商品与 Agent 行为均为模拟演示。</p></div><div class="side-foot"><span>本地离线可运行</span><span>© 2026</span></div></div>
+  <div class="sidebar-bottom"><div class="side-note"><div class="mono">PROTOTYPE / 0.1</div><p>这是用于展示目标产品流程的交互原型。所有训练结果、商品与 Agent 行为均为模拟演示。</p></div><div class="side-foot"><span>本地离线可运行</span><span>© 2026</span></div></div>
  </aside>
  <main class="main">
-  <header class="topbar"><div class="crumb"><button class="hamburger" id="hamburger" aria-label="打开导航"><svg width="20" height="20"><use href="#i-menu"></use></svg></button><span class="allcaps">RECFORGETBENCH</span><span class="slash">/</span><span id="crumbName">项目总览</span></div><div class="top-actions"><span class="prototype-mark"><span class="dot"></span> 离线展示版 · Mock Data</span><button class="btn primary xs" data-page="demo"><svg><use href="#i-play"></use></svg> 体验实验流程</button></div></header>
+  <header class="topbar"><div class="crumb"><button class="hamburger" id="hamburger" aria-label="打开导航"><svg width="20" height="20"><use href="#i-menu"></use></svg></button><span class="allcaps">AFTERREC</span><span class="slash">/</span><span id="crumbName">项目总览</span></div><div class="top-actions"><span class="prototype-mark"><span class="dot"></span> 离线展示版 · Mock Data</span><button class="btn primary xs" data-page="demo"><svg><use href="#i-play"></use></svg> 体验实验流程</button></div></header>
   <div class="content">
    <section class="screen active" id="screen-overview">
     <div class="hero">
      <div><div class="eyebrow">RECOMMENDATION UNLEARNING × USER AGENTS</div><h1>从数据遗忘，<br>到用户真实感知。</h1><p>一个整合推荐模型训练、Unlearning、传统指标评测与多轮 Agent 用户模拟的开源科研平台。用统一的实验环境，研究“模型忘了吗”与“用户感到被遗忘了吗”之间的差异。</p><div class="hero-actions"><button class="btn dark" data-page="demo"><svg><use href="#i-play"></use></svg> 体验完整实验</button><button class="btn secondary" style="background:transparent;color:#e7f6f3;border-color:#4d6571" data-page="architecture">查看系统架构 <svg><use href="#i-arrow"></use></svg></button></div></div>
      <div class="hero-right"><div class="micro">RESEARCH QUESTION / 研究视角</div><div class="hero-signal"><span class="signal-no">01</span><div><div class="signal-label">传统数据遗忘</div><div class="signal-desc">数据删除、模型影响、推荐效用与效率</div></div></div><div class="hero-signal"><span class="signal-no">02</span><div><div class="signal-label">用户感知遗忘</div><div class="signal-desc">跨类别语义关联、反复曝光、多轮反馈</div></div></div><div class="hero-signal"><span class="signal-no">03</span><div><div class="signal-label">可信 Agent 评测</div><div class="signal-desc">与真人标注对齐，而非默认 LLM 判断可靠</div></div></div></div>
     </div>
-    <div class="stats-row"><div class="surface stat"><div class="stat-icon"><svg><use href="#i-layers"></use></svg></div><div><div class="stat-number">06</div><p>平台核心功能模块</p></div></div><div class="surface stat"><div class="stat-icon"><svg><use href="#i-team"></use></svg></div><div><div class="stat-number">03</div><p>本科生开发方向</p></div></div><div class="surface stat"><div class="stat-icon"><svg><use href="#i-target"></use></svg></div><div><div class="stat-number">01</div><p>科研重点：Agent 感知评测</p></div></div></div>
+    <div class="stats-row"><div class="surface stat"><div class="stat-icon"><svg><use href="#i-layers"></use></svg></div><div><div class="stat-number">06</div><p>平台核心功能模块</p></div></div><div class="surface stat"><div class="stat-icon"><svg><use href="#i-team"></use></svg></div><div><div class="stat-number">02</div><p>相互独立的评测视角</p></div></div><div class="surface stat"><div class="stat-icon"><svg><use href="#i-target"></use></svg></div><div><div class="stat-number">01</div><p>科研重点：Agent 感知评测</p></div></div></div>
     <div class="section-heading"><div><h2>一个完整的实验闭环</h2><p>点击任意阶段，即可进入对应的交互演示。</p></div><button class="sub-link" data-page="demo">进入实验工作台 →</button></div>
     <div class="pipeline" id="overviewPipeline"></div>
     <div class="section-heading"><div><h2>六个核心功能模块</h2><p>以清晰的模块边界支持独立开发与后续算法扩展。</p></div><button class="sub-link" data-page="modules">查看模块说明 →</button></div>
@@ -106,7 +106,7 @@
     <div class="scope"><div class="surface scope-card"><span class="pill green">MVP · 第一版必须做</span><h3 style="margin-top:14px">可运行的本地实验平台</h3><p>让使用者无需修改源码，就能体验推荐、遗忘、静态评测和基础 Agent 模拟。</p><div class="inline-list"><span>Amazon 电商样例</span><span>BPR / LightGCN</span><span>Retrain</span><span>Recall / NDCG</span><span>规则 Agent</span><span>Web 页面</span></div></div><div class="surface scope-card"><span class="pill blue">RESEARCH · 逐步增加</span><h3 style="margin-top:14px">可信的用户感知遗忘 Benchmark</h3><p>在可用的工程底座上加入更强的模拟方法、真人校准、多模态内容和系统性科研实验。</p><div class="inline-list"><span>LLM Agent</span><span>语义残留指标</span><span>真人标注</span><span>多遗忘算法</span><span>更多数据集</span><span>企业 Pre-A/B</span></div></div></div>
    </section>
    <section class="screen" id="screen-architecture">
-    <div class="pagehead"><div><div class="eyebrow">SYSTEM DESIGN</div><h1 class="page-title">系统总体架构</h1><p>本地 Web + 模块化 Python 实验引擎。点击架构中的任意模块，右侧显示职责、负责人以及第一版交付内容。</p></div><span class="pill green">模块化单体 · Local First</span></div>
+    <div class="pagehead"><div><div class="eyebrow">SYSTEM DESIGN</div><h1 class="page-title">系统总体架构</h1><p>本地 Web + 模块化 Python 实验引擎。点击任意模块，查看功能、接口及规划能力。</p></div><span class="pill green">模块化单体 · Local First</span></div>
     <div class="arch-wrap"><div class="surface arch-board">
       <div class="arch-layer"><div class="arch-top"><span class="arch-caption">LAYER 01</span><span class="arch-title">交互展示层 / Web Application</span></div><div class="arch-nodes"><button class="arch-node" data-mod="platform"><svg><use href="#i-monitor"></use></svg>实验配置</button><button class="arch-node" data-mod="platform"><svg><use href="#i-chart"></use></svg>结果可视化</button><button class="arch-node" data-mod="platform"><svg><use href="#i-route"></use></svg>交互轨迹回放</button></div></div>
       <div class="arch-down"><svg><use href="#i-down"></use></svg></div>
@@ -119,7 +119,7 @@
      </div><aside class="surface detail-panel" id="archDetail"></aside></div>
    </section>
    <section class="screen" id="screen-modules">
-    <div class="pagehead"><div><div class="eyebrow">FUNCTIONAL SPECIFICATION</div><h1 class="page-title">功能模块与责任边界</h1><p>只约定“做什么、由谁负责、第一版交付什么”。内部代码结构及技术实现由学生分别设计。</p></div><button class="btn secondary" data-page="team">查看团队分工 <svg><use href="#i-arrow"></use></svg></button></div>
+    <div class="pagehead"><div><div class="eyebrow">FUNCTIONAL SPECIFICATION</div><h1 class="page-title">功能模块</h1><p>查看每个模块的功能范围、接口及后续扩展方向。</p></div></div>
     <div class="module-screen"><div class="surface module-list" id="moduleList"></div><div class="surface module-detail" id="moduleDetail"></div></div>
    </section>
    <section class="screen" id="screen-demo">
@@ -127,22 +127,13 @@
     <div class="surface steps" id="demoSteps"></div>
     <div class="demo-shell"><div class="surface demo-main" id="demoBody"></div><aside class="rail"><div class="surface rail-card"><h3>实验执行状态</h3><div id="runStatuses"></div></div><div class="surface rail-card"><h3>当前示例配置</h3><div id="runConfig"></div></div><div class="rail-note">演示说明：界面上的商品、分数、模型指标与用户行为全部为模拟样例，不能作为真实科研结论。正式平台需由后端实际运行实验。</div></aside></div>
    </section>
-   <section class="screen" id="screen-team">
-    <div class="pagehead"><div><div class="eyebrow">TEAM & OWNERSHIP</div><h1 class="page-title">团队分工与协作机制</h1><p>你主导科研和方向，三位本科生独立负责开发模块。通过统一代码仓库、公共接口和阶段成果验收推进。</p></div><span class="pill green">1 Lead + 3 Developers</span></div>
-    <div class="surface team-top"><div class="team-circle"><svg><use href="#i-target"></use></svg></div><div><h3>项目负责人 / Research & Product Lead</h3><p>定义研究目标和 MVP 范围；负责 Agent 核心算法、实验协议、跨模块架构决策及最终成果验收。无需参与日常代码审查。</p></div><span class="pill green">科研核心</span></div>
-    <div class="team-grid" id="teamGrid"></div>
-    <div class="section-heading"><div><h2>模块协作与交付关系</h2><p>先固定最少量公共契约，其余内部设计由各负责人决定。</p></div></div>
-    <div class="surface handoff"><div class="handoff-flow"><span class="handoff-node">A · 推荐模型与数据</span><span class="handoff-arrow">→</span><span class="handoff-node">B · 遗忘与静态评测</span><span class="handoff-arrow">→</span><span class="handoff-node">C · 平台集成与展示</span></div><p class="small" style="margin:12px 0 0">你的 Agent 算法独立接入 C 搭建的 Simulation Runner；A 提供模型打分与推荐能力；B 提供遗忘后模型及评测记录。</p></div>
-    <div class="section-heading"><div><h2>适配 Claude Code / Codex 的工作流</h2><p>不要求负责人读源码，但必须由模块开发者为实现和实验正确性负责。</p></div></div>
-    <div class="collab-list"><div class="collab-card"><div class="num">01 / PLAN</div><strong>任务与接口先行</strong><p>每项 GitHub Issue 明确范围、输入输出、验收条件。</p></div><div class="collab-card"><div class="num">02 / BUILD</div><strong>AI 辅助独立开发</strong><p>同一仓库，各自分支，不擅自修改其他模块。</p></div><div class="collab-card"><div class="num">03 / VERIFY</div><strong>测试与交叉验证</strong><p>AI Review + 自动测试 + 学生负责技术核验。</p></div><div class="collab-card"><div class="num">04 / SHIP</div><strong>每周集成验收</strong><p>可运行 Demo、实验结果和简短交付说明。</p></div></div>
-   </section>
    <section class="screen" id="screen-roadmap">
-    <div class="pagehead"><div><div class="eyebrow">DELIVERY ROADMAP</div><h1 class="page-title">先打通最小闭环，再扩展科研能力</h1><p>路线图按阶段成果组织。点击阶段卡片，查看开发重点、负责人与验收标准。</p></div><span class="pill blue">建议排期 · 可调整</span></div>
+    <div class="pagehead"><div><div class="eyebrow">DELIVERY ROADMAP</div><h1 class="page-title">先打通最小闭环，再扩展科研能力</h1><p>路线图按阶段成果组织，展示计划中的能力和验收目标。</p></div><span class="pill blue">建议排期 · 可调整</span></div>
     <div class="roadmap-intro"><div class="flex-between"><div><h3>第一版目标：MVP v0.1</h3><p style="font-size:12px;margin:5px 0 0">一套在本地浏览器中完成真实推荐训练、Retrain 对照、静态评测和基础 Agent 多轮模拟的可运行平台。</p></div><button class="btn secondary xs" data-page="demo">查看目标产品 <svg><use href="#i-arrow"></use></svg></button></div></div>
     <div class="roadmap-track" id="milestoneList"></div><div class="surface milestone-detail" id="milestoneDetail"></div>
-    <div class="surface roadmap-bottom"><div class="flex-between"><div><h3 style="margin-bottom:4px">下一阶段：Research Track</h3><p>在工程 MVP 上持续推进 LLM Agent、语义残留指标、真人校准以及多算法 Benchmark。科研创新由项目负责人主导，工程团队负责可复现接入。</p></div><span class="pill blue">P1 / P2</span></div></div>
+    <div class="surface roadmap-bottom"><div class="flex-between"><div><h3 style="margin-bottom:4px">下一阶段：Research Track</h3><p>在工程 MVP 上持续推进 LLM Agent、语义残留指标、真人校准以及多算法 Benchmark。后续研究将与现有模块接口对接，保持实验可复现。</p></div><span class="pill blue">P1 / P2</span></div></div>
    </section>
-   <footer class="footer"><div>RecForgetBench · System design and interactive prototype</div><div>Mock data only · Offline, single-file HTML · v0.1</div></footer>
+   <footer class="footer"><div>AfterRec · System design and interactive prototype</div><div>Mock data only · Offline, single-file HTML · v0.1</div></footer>
   </div>
  </main>
 </div>
@@ -155,12 +146,12 @@
  const icon=(name)=>`<svg aria-hidden="true"><use href="#i-${name}"></use></svg>`;
  const escapeHtml=(v)=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const modules=[
-  {id:'dataset',number:'01',name:'数据集管理',en:'DATA MANAGEMENT',icon:'database',owner:'学生 A',summary:'统一管理用户行为、商品信息、数据切分与遗忘请求。',responsibilities:['导入并处理电商交互数据','统一用户 / 商品 ID 映射','生成训练、验证、测试和遗忘数据划分'],mvp:['一个 Amazon 混合品类演示子集','固定的 Train / Val / Test 划分','Forget / Retain 数据构造'],later:['更多领域和多模态元数据','复杂用户级、概念级遗忘任务'],contract:'输入：原始用户商品交互 → 输出：DatasetVersion、SplitVersion、ForgetSet'},
-  {id:'recsys',number:'02',name:'推荐模型与训练',en:'RECOMMENDATION ENGINE',icon:'cpu',owner:'学生 A',summary:'复用 RecBole，完成模型训练、保存、加载和真实 Top-K 推荐。',responsibilities:['通过统一接口调用 RecBole 模型','管理训练配置与模型 Checkpoint','向其他模块提供推荐列表与候选打分'],mvp:['BPR-MF 或 LightGCN 的稳定训练','真实用户 Top-K 推荐与商品信息','模型保存、重载及基础训练指标'],later:['更多经典和序列推荐模型','算法注册与批量训练'],contract:'输入：DatasetVersion、ModelConfig → 输出：ModelArtifact、Top-K 推荐'},
-  {id:'unlearning',number:'03',name:'Unlearning 执行',en:'UNLEARNING ENGINE',icon:'trash',owner:'学生 B',summary:'在统一的遗忘数据和实验协议下执行数据遗忘算法。',responsibilities:['构造并验证 Retain / Forget 集合','执行 Retrain 和后续遗忘算法','记录遗忘后模型、运行配置与耗时'],mvp:['Retrain 作为核心对照方法','Original / Retrain 两类模型管理','遗忘任务执行和结果记录'],later:['接入经验证的近似遗忘方法','支持分片式和图结构专用算法'],contract:'输入：Original Model、ForgetRequest → 输出：UnlearnedArtifact、RunLog'},
-  {id:'evaluation',number:'04',name:'传统静态评测',en:'STATIC EVALUATION',icon:'chart',owner:'学生 B',summary:'统一测量推荐效用、遗忘相关表现和执行效率。',responsibilities:['规范相同的评测用户与候选商品集合','计算推荐指标和遗忘实验统计','比较 Original、Retrain 与后续遗忘模型'],mvp:['Recall@10 / NDCG@10','基础遗忘集表现与执行时间','模型对照表和实验结果导出'],later:['MIA 等隐私攻击评测','更多任务、统计检验与效率指标'],contract:'输入：Models、EvaluationProtocol → 输出：Metrics、EvaluationReport'},
-  {id:'agent',number:'05',name:'Agent 动态模拟',en:'USER SIMULATION',icon:'bot',owner:'你（科研）＋学生 C（工程）',summary:'模拟用户在遗忘后接收推荐、执行行为并影响后续展示的过程。',responsibilities:['定义 Agent 观察与动作的统一接口','驱动多轮推荐、反馈和短期状态更新','记录完整轨迹并对比用户感知残留'],mvp:['规则 Agent + 3–5 轮交互','点击 / 跳过 / 不感兴趣 / 退出','轨迹日志和初步关联展示'],later:['LLM Agent 与长期用户记忆','语义残留指标、真人标注校准'],contract:'输入：AgentPersona、Model、Scenario → 输出：InteractionTrace、DynamicMetrics'},
-  {id:'platform',number:'06',name:'Web 平台与实验管理',en:'EXPERIMENT PLATFORM',icon:'monitor',owner:'学生 C',summary:'将各模块连接为无需修改源码即可操作的本地研究平台。',responsibilities:['统一网页、API、任务状态及结果管理','展示模型推荐、传统指标和 Agent 轨迹','维护集成测试并协调各模块交付'],mvp:['本地 Web / FastAPI 运行入口','实验流程配置和推荐结果展示','静态评测图表与轨迹回放'],later:['服务器部署及多用户能力','公共插件接入、排行榜与报告系统'],contract:'输入：各引擎标准 API → 输出：Web 页面、任务状态与可视化报告'}
+  {id:'dataset',number:'01',name:'数据集管理',en:'DATA MANAGEMENT',icon:'database',summary:'统一管理用户行为、商品信息、数据切分与遗忘请求。',responsibilities:['导入并处理电商交互数据','统一用户 / 商品 ID 映射','生成训练、验证、测试和遗忘数据划分'],mvp:['一个 Amazon 混合品类演示子集','固定的 Train / Val / Test 划分','Forget / Retain 数据构造'],later:['更多领域和多模态元数据','复杂用户级、概念级遗忘任务'],contract:'输入：原始用户商品交互 → 输出：DatasetVersion、SplitVersion、ForgetSet'},
+  {id:'recsys',number:'02',name:'推荐模型与训练',en:'RECOMMENDATION ENGINE',icon:'cpu',summary:'复用 RecBole，完成模型训练、保存、加载和真实 Top-K 推荐。',responsibilities:['通过统一接口调用 RecBole 模型','管理训练配置与模型 Checkpoint','向其他模块提供推荐列表与候选打分'],mvp:['BPR-MF 或 LightGCN 的稳定训练','真实用户 Top-K 推荐与商品信息','模型保存、重载及基础训练指标'],later:['更多经典和序列推荐模型','算法注册与批量训练'],contract:'输入：DatasetVersion、ModelConfig → 输出：ModelArtifact、Top-K 推荐'},
+  {id:'unlearning',number:'03',name:'Unlearning 执行',en:'UNLEARNING ENGINE',icon:'trash',summary:'在统一的遗忘数据和实验协议下执行数据遗忘算法。',responsibilities:['构造并验证 Retain / Forget 集合','执行 Retrain 和后续遗忘算法','记录遗忘后模型、运行配置与耗时'],mvp:['Retrain 作为核心对照方法','Original / Retrain 两类模型管理','遗忘任务执行和结果记录'],later:['接入经验证的近似遗忘方法','支持分片式和图结构专用算法'],contract:'输入：Original Model、ForgetRequest → 输出：UnlearnedArtifact、RunLog'},
+  {id:'evaluation',number:'04',name:'传统静态评测',en:'STATIC EVALUATION',icon:'chart',summary:'统一测量推荐效用、遗忘相关表现和执行效率。',responsibilities:['规范相同的评测用户与候选商品集合','计算推荐指标和遗忘实验统计','比较 Original、Retrain 与后续遗忘模型'],mvp:['Recall@10 / NDCG@10','基础遗忘集表现与执行时间','模型对照表和实验结果导出'],later:['MIA 等隐私攻击评测','更多任务、统计检验与效率指标'],contract:'输入：Models、EvaluationProtocol → 输出：Metrics、EvaluationReport'},
+  {id:'agent',number:'05',name:'Agent 动态模拟',en:'USER SIMULATION',icon:'bot',summary:'模拟用户在遗忘后接收推荐、执行行为并影响后续展示的过程。',responsibilities:['定义 Agent 观察与动作的统一接口','驱动多轮推荐、反馈和短期状态更新','记录完整轨迹并对比用户感知残留'],mvp:['规则 Agent + 3–5 轮交互','点击 / 跳过 / 不感兴趣 / 退出','轨迹日志和初步关联展示'],later:['LLM Agent 与长期用户记忆','语义残留指标、真人标注校准'],contract:'输入：AgentPersona、Model、Scenario → 输出：InteractionTrace、DynamicMetrics'},
+  {id:'platform',number:'06',name:'Web 平台与实验管理',en:'EXPERIMENT PLATFORM',icon:'monitor',summary:'将各模块连接为无需修改源码即可操作的本地研究平台。',responsibilities:['统一网页、API、任务状态及结果管理','展示模型推荐、传统指标和 Agent 轨迹','维护集成测试并协调各模块交付'],mvp:['本地 Web / FastAPI 运行入口','实验流程配置和推荐结果展示','静态评测图表与轨迹回放'],later:['服务器部署及多用户能力','公共插件接入、排行榜与报告系统'],contract:'输入：各引擎标准 API → 输出：Web 页面、任务状态与可视化报告'}
  ];
  const pipeline=[
   {name:'数据准备',sub:'数据与遗忘集',icon:'database',mod:'dataset'},
@@ -171,35 +162,28 @@
   {name:'结果报告',sub:'对照与分析',icon:'file',mod:'platform'}
  ];
  const milestones=[
-  {week:'准备阶段 · 2 天',name:'模块方案与接口',tag:'Phase 0',desc:'确定负责人与 MVP 范围。学生分别提交简版模块设计及排期。',works:['完成现有 RecBole Demo 验收','创建统一 GitHub 仓库','三人统一数据与模型接口','学生提交模块方案和排期'],deliver:'一份统一接口说明 + 三份模块设计方案',lead:'你组织；A / B / C 参与'},
-  {week:'第 1 周',name:'推荐 Web Demo',tag:'Phase 1',desc:'先让真实训练得到的推荐结果出现在浏览器里。',works:['A：RecBole 训练、保存与 Top-K','B：Forget / Retain 切分与 Retrain 脚本','C：本地 Web、推荐列表页面'],deliver:'一个可选择用户、展示真实推荐结果的网页',lead:'A 主导核心；C 集成'},
-  {week:'第 2 周',name:'Unlearning 闭环',tag:'Phase 2',desc:'运行一组真正的 Original / Retrain 实验。',works:['A：商品元数据和数据映射','B：Retrain、基础静态评测','C：训练与遗忘任务页面'],deliver:'从 Web 发起遗忘实验并查看对照结果',lead:'B 主导；A / C 配合'},
-  {week:'第 3 周',name:'Agent 基础模拟',tag:'Phase 3',desc:'实现可替换的 Agent Runtime，与冻结模型多轮交互。',works:['你：明确 Agent Observation / Action','A：支持推荐分数与重排接口','B：基础轨迹统计','C：规则 Agent、会话和轨迹展示'],deliver:'模拟用户完成 3–5 轮交互并回放',lead:'你定义；C 工程落地'},
-  {week:'第 4 周',name:'集成与 MVP 发布',tag:'Phase 4',desc:'修复依赖和流程问题，整理可独立运行的本地版本。',works:['验证完整流水线','统一环境、测试与运行文档','确保其他同学能安装复现','评审下一阶段科研开发重点'],deliver:'本地可运行 MVP v0.1',lead:'C 集成；A / B 各自质量负责'}
- ];
- const teams=[
-  {name:'学生 A',tag:'Dataset + RecSys',icon:'database',desc:'负责整个推荐系统的基础能力，让其他模块可以复用真实模型。',tasks:['数据集预处理与版本','RecBole 模型训练和加载','统一 Top-K 推荐接口'],output:'交付：可独立调用的推荐引擎'},
-  {name:'学生 B',tag:'Unlearning + Evaluation',icon:'trash',desc:'负责遗忘实验的执行与指标，保障数据和实验协议正确。',tasks:['Forget / Retain 集合','Retrain 与遗忘算法接入','传统指标和实验对照'],output:'交付：可复现的遗忘评测流程'},
-  {name:'学生 C',tag:'Web + Integration',icon:'monitor',desc:'负责用户操作入口与模块连接，使整个系统可用、可演示。',tasks:['前后端 API 和本地网页','实验调度、指标与轨迹展示','Agent Runtime 工程、代码集成'],output:'交付：端到端可运行平台'}
- ];
- const state={page:'overview',selectedModule:'dataset',milestone:0,demoStep:0,model:'lightgcn',ratio:'1%',trainDone:false,unlearnDone:false,agentModel:'retrain',round:1,maxRounds:5,history:[],negativeIds:[],clickedIds:[],ended:false,autoTimer:null};
+  {week:'Foundation',name:'基础框架',tag:'P0',desc:'建立模块边界、公共接口与本地运行入口。',works:['共享数据结构与校验','基础 API 和指标函数','离线交互原型'],deliver:'可运行的仓库基础框架'},
+  {week:'Recommendation',name:'真实推荐模型',tag:'P1',desc:'接入真实数据和推荐模型训练。',works:['RecBole 模型训练与加载','真实数据划分与商品信息','API 和 Web 展示真实 Top-K'],deliver:'可重现的真实推荐结果'},
+  {week:'Unlearning',name:'遗忘评测',tag:'P2',desc:'进行 Retrain 和传统指标对照。',works:['Forget / Retain 划分','Fresh Retrain 基线','统一 Recall / NDCG 对照'],deliver:'可重现的遗忘实验报告'},
+  {week:'Simulation',name:'多轮用户模拟',tag:'P3',desc:'将 Agent 交互与真实推荐模型连接。',works:['观察、动作与会话接口','3–5 轮模拟与反馈','轨迹回放和模型对比'],deliver:'完整模拟交互轨迹'}
+  ];
+  const state={page:'overview',selectedModule:'dataset',milestone:0,demoStep:0,model:'lightgcn',ratio:'1%',trainDone:false,unlearnDone:false,agentModel:'retrain',round:1,maxRounds:5,history:[],negativeIds:[],clickedIds:[],ended:false,autoTimer:null};
  let toastTimer=null;
  function toast(msg){const e=$('#toast');e.textContent=msg;e.classList.add('on');clearTimeout(toastTimer);toastTimer=setTimeout(()=>e.classList.remove('on'),2800)}
- function nav(page){state.page=page;$$('.screen').forEach(el=>el.classList.toggle('active',el.id==='screen-'+page));$$('.nav-btn').forEach(el=>el.classList.toggle('active',el.dataset.page===page));const names={overview:'项目总览',architecture:'系统架构',modules:'功能模块',demo:'实验流程演示',team:'团队分工与协作',roadmap:'开发路线图'};$('#crumbName').textContent=names[page]||page;$('#sidebar').classList.remove('open');$('#mobileOverlay').classList.remove('on');window.scrollTo({top:0,behavior:'auto'});if(page==='architecture')renderArch();if(page==='modules')renderModules();if(page==='demo')renderDemo();if(page==='roadmap')renderMilestones()}
+ function nav(page){state.page=page;$$('.screen').forEach(el=>el.classList.toggle('active',el.id==='screen-'+page));$$('.nav-btn').forEach(el=>el.classList.toggle('active',el.dataset.page===page));const names={overview:'项目总览',architecture:'系统架构',modules:'功能模块',demo:'实验流程演示',roadmap:'开发路线图'};$('#crumbName').textContent=names[page]||page;$('#sidebar').classList.remove('open');$('#mobileOverlay').classList.remove('on');window.scrollTo({top:0,behavior:'auto'});if(page==='architecture')renderArch();if(page==='modules')renderModules();if(page==='demo')renderDemo();if(page==='roadmap')renderMilestones()}
  function renderOverview(){
   $('#overviewPipeline').innerHTML=pipeline.map((p,i)=>`<button class="pipe" data-demo-step="${i}"><span class="pipe-no">0${i+1}</span>${icon(p.icon)}<h3>${p.name}</h3><p>${p.sub}</p></button>`).join('');
-  $('#overviewModules').innerHTML=modules.map(m=>`<button class="surface module-card" data-open-module="${m.id}"><div class="module-head"><span class="module-icon">${icon(m.icon)}</span><span class="pill outline">${m.number}</span></div><h3>${m.name}</h3><p>${m.summary}</p><div class="owner"><span>负责人 · ${m.owner}</span><span style="color:var(--accent);font-weight:750">查看模块 →</span></div></button>`).join('');
+  $('#overviewModules').innerHTML=modules.map(m=>`<button class="surface module-card" data-open-module="${m.id}"><div class="module-head"><span class="module-icon">${icon(m.icon)}</span><span class="pill outline">${m.number}</span></div><h3>${m.name}</h3><p>${m.summary}</p><div class="owner"><span>功能模块</span><span style="color:var(--accent);font-weight:750">查看模块 →</span></div></button>`).join('');
  }
- function renderArch(){const m=modules.find(x=>x.id===state.selectedModule);$$('.arch-node').forEach(n=>n.classList.toggle('chosen',n.dataset.mod===m.id));$('#archDetail').innerHTML=`<div class="eyebrow">MODULE / ${m.number}</div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px"><span class="module-icon">${icon(m.icon)}</span><span class="pill green">${m.owner}</span></div><h2>${m.name}</h2><p>${m.summary}</p><div style="font-size:10px;font-weight:800;color:#90a0aa;letter-spacing:.07em;margin-bottom:6px">MVP 核心交付</div>${m.mvp.map(x=>`<div class="feature-row">${icon('check')} <span>${x}</span></div>`).join('')}<div class="detail-owner"><strong>模块接口方向</strong><div style="margin-top:5px;line-height:1.8">${m.contract}</div></div><button class="btn secondary" style="width:100%;margin-top:14px" data-open-module="${m.id}">查看完整模块说明 ${icon('arrow')}</button>`}
+ function renderArch(){const m=modules.find(x=>x.id===state.selectedModule);$$('.arch-node').forEach(n=>n.classList.toggle('chosen',n.dataset.mod===m.id));$('#archDetail').innerHTML=`<div class="eyebrow">MODULE / ${m.number}</div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px"><span class="module-icon">${icon(m.icon)}</span><span class="pill green">MODULE</span></div><h2>${m.name}</h2><p>${m.summary}</p><div style="font-size:10px;font-weight:800;color:#90a0aa;letter-spacing:.07em;margin-bottom:6px">MVP 核心交付</div>${m.mvp.map(x=>`<div class="feature-row">${icon('check')} <span>${x}</span></div>`).join('')}<div class="detail-owner"><strong>模块接口方向</strong><div style="margin-top:5px;line-height:1.8">${m.contract}</div></div><button class="btn secondary" style="width:100%;margin-top:14px" data-open-module="${m.id}">查看完整模块说明 ${icon('arrow')}</button>`}
  function renderModules(){
   $('#moduleList').innerHTML=modules.map(m=>`<button data-modselect="${m.id}" class="${m.id===state.selectedModule?'active':''}"><span class="mini-ico">${icon(m.icon)}</span><span><strong>${m.name}</strong><small>${m.en}</small></span></button>`).join('');
   const m=modules.find(x=>x.id===state.selectedModule);
-  $('#moduleDetail').innerHTML=`<span class="pill green">${m.number} / 06 · ${m.owner}</span><div class="big-icon" style="margin-top:17px">${icon(m.icon)}</div><h2>${m.name}</h2><p>${m.summary}</p><div class="feature-columns"><div class="soft-panel"><h3>负责的核心功能</h3>${m.responsibilities.map(x=>`<div class="bullet-line">${x}</div>`).join('')}</div><div class="soft-panel"><h3>第一版 MVP 交付</h3>${m.mvp.map(x=>`<div class="bullet-line">${x}</div>`).join('')}</div></div><div class="soft-panel" style="margin-top:15px"><h3>后续扩展方向</h3><div class="inline-list">${m.later.map(x=>`<span>${x}</span>`).join('')}</div></div><div style="margin-top:19px"><div class="field-label">模块输入 / 输出契约（概念性）</div><div class="interface-bar mono">${m.contract}</div></div><div class="module-bottom"><button class="btn primary" data-page="demo">查看实验流程 ${icon('arrow')}</button><button class="btn secondary" data-page="team">查看负责人</button></div>`;
+  $('#moduleDetail').innerHTML=`<span class="pill green">${m.number} / 06</span><div class="big-icon" style="margin-top:17px">${icon(m.icon)}</div><h2>${m.name}</h2><p>${m.summary}</p><div class="feature-columns"><div class="soft-panel"><h3>负责的核心功能</h3>${m.responsibilities.map(x=>`<div class="bullet-line">${x}</div>`).join('')}</div><div class="soft-panel"><h3>第一版 MVP 交付</h3>${m.mvp.map(x=>`<div class="bullet-line">${x}</div>`).join('')}</div></div><div class="soft-panel" style="margin-top:15px"><h3>后续扩展方向</h3><div class="inline-list">${m.later.map(x=>`<span>${x}</span>`).join('')}</div></div><div style="margin-top:19px"><div class="field-label">模块输入 / 输出契约（概念性）</div><div class="interface-bar mono">${m.contract}</div></div><div class="module-bottom"><button class="btn primary" data-page="demo">查看实验流程 ${icon('arrow')}</button></div>`;
  }
- function renderTeam(){ $('#teamGrid').innerHTML=teams.map(t=>`<div class="surface team-card"><div class="flex-between"><span class="team-tag">${t.tag}</span><span class="module-icon" style="width:34px;height:34px">${icon(t.icon)}</span></div><h3>${t.name}</h3><p>${t.desc}</p><div class="details">${t.tasks.map(x=>`<div class="bullet-line">${x}</div>`).join('')}</div><div style="margin-top:13px" class="pill blue">${t.output}</div></div>`).join('') }
  function renderMilestones(){
   $('#milestoneList').innerHTML=milestones.map((m,i)=>`<button class="milestone ${state.milestone===i?'active':''}" data-mile="${i}"><span class="milestone-no">${m.tag} · ${m.week}</span><h3>${m.name}</h3><p>${m.desc}</p><span class="pill ${state.milestone===i?'green':'outline'}">${state.milestone===i?'当前查看':'查看阶段详情'}</span></button>`).join('');
-  const m=milestones[state.milestone];$('#milestoneDetail').innerHTML=`<div><div class="eyebrow">${m.tag} / DELIVERY</div><h2>${m.name}</h2><p class="small" style="margin:0 0 16px">${m.desc}</p>${m.works.map(w=>`<div class="feature-row">${icon('check')} <span>${w}</span></div>`).join('')}</div><div><div class="field-label">验收交付物</div><div class="deliverable">${m.deliver}</div><div class="field-label" style="margin-top:20px">主要责任</div><p class="small" style="color:var(--ink2)">${m.lead}</p><div class="field-label" style="margin-top:20px">阶段时间</div><span class="pill blue">${m.week}</span></div>`;
+  const m=milestones[state.milestone];$('#milestoneDetail').innerHTML=`<div><div class="eyebrow">${m.tag} / DELIVERY</div><h2>${m.name}</h2><p class="small" style="margin:0 0 16px">${m.desc}</p>${m.works.map(w=>`<div class="feature-row">${icon('check')} <span>${w}</span></div>`).join('')}</div><div><div class="field-label">验收交付物</div><div class="deliverable">${m.deliver}</div><div class="field-label" style="margin-top:20px">阶段时间</div><span class="pill blue">${m.week}</span></div>`;
  }
  const catalog=[
   {id:'i01',name:'标准篮球训练用球',cat:'球类运动',emoji:'🏀',type:'direct',og:.99,rt:.32},
@@ -297,9 +281,9 @@
   $('#runStatuses').innerHTML=status.map(s=>`<div class="rail-item ${s[2]?'done':''}"><span class="status-icon">${s[2]?'✓':'·'}</span><span>${s[0]}</span><span class="rail-value">${s[1]}</span></div>`).join('');
   $('#runConfig').innerHTML=`<div class="rail-item"><span>场景</span><span class="rail-value">电商样例</span></div><div class="rail-item"><span>模型</span><span class="rail-value">${state.model==='lightgcn'?'LightGCN':'BPR-MF'}</span></div><div class="rail-item"><span>遗忘比例</span><span class="rail-value">${state.ratio}</span></div><div class="rail-item"><span>遗忘方式</span><span class="rail-value">Retrain</span></div><div class="rail-item"><span>Agent 轮数</span><span class="rail-value">最多 ${state.maxRounds} 轮</span></div><button class="btn secondary xs" style="margin-top:12px;width:100%" data-demo-reset>${icon('refresh')} 重置所有演示状态</button>`;
  }
- function report(){return {notice:'Mock prototype data. Not a real training, unlearning or research result.',name:'RecForgetBench Demo',dataset:'Amazon mixed-category fictional demonstration catalog',model:state.model,forget_ratio:state.ratio,unlearning:'Retrain',train_demo_completed:state.trainDone,unlearning_demo_completed:state.unlearnDone,mock_metrics:metricData(),agent_model:state.agentModel,interaction_trace:state.history,completed_rounds:state.history.length,agent_memory:{negative_item_ids:state.negativeIds,clicked_item_ids:state.clickedIds}}}
- function downloadReport(){const blob=new Blob([JSON.stringify(report(),null,2)],{type:'application/json;charset=utf-8'});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='recforgetbench_mock_experiment.json';document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);toast('已下载演示实验 JSON')}
- function copySummary(){const r=report(),str=`RecForgetBench · 演示实验摘要（非真实计算）\n数据：Amazon 混合品类示例\n推荐模型：${r.model}\n遗忘：Retrain / ${r.forget_ratio}\nAgent 模型：${r.agent_model}\n已记录轮数：${r.completed_rounds}\n不感兴趣反馈：${state.negativeIds.length}\n注意：全部为模拟演示数据。`;if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(str).then(()=>toast('演示摘要已复制')).catch(()=>fallbackCopy(str));else fallbackCopy(str)}
+ function report(){return {notice:'Mock prototype data. Not a real training, unlearning or research result.',name:'AfterRec Demo',dataset:'Amazon mixed-category fictional demonstration catalog',model:state.model,forget_ratio:state.ratio,unlearning:'Retrain',train_demo_completed:state.trainDone,unlearning_demo_completed:state.unlearnDone,mock_metrics:metricData(),agent_model:state.agentModel,interaction_trace:state.history,completed_rounds:state.history.length,agent_memory:{negative_item_ids:state.negativeIds,clicked_item_ids:state.clickedIds}}}
+ function downloadReport(){const blob=new Blob([JSON.stringify(report(),null,2)],{type:'application/json;charset=utf-8'});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='afterrec_mock_experiment.json';document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);toast('已下载演示实验 JSON')}
+ function copySummary(){const r=report(),str=`AfterRec · 演示实验摘要（非真实计算）\n数据：Amazon 混合品类示例\n推荐模型：${r.model}\n遗忘：Retrain / ${r.forget_ratio}\nAgent 模型：${r.agent_model}\n已记录轮数：${r.completed_rounds}\n不感兴趣反馈：${state.negativeIds.length}\n注意：全部为模拟演示数据。`;if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(str).then(()=>toast('演示摘要已复制')).catch(()=>fallbackCopy(str));else fallbackCopy(str)}
  function fallbackCopy(v){const a=document.createElement('textarea');a.value=v;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy');toast('演示摘要已复制')}catch(e){toast('当前环境无法复制，请使用下载 JSON')}a.remove()}
  document.addEventListener('click',e=>{
   const el=e.target.closest('button');if(!el)return;
@@ -326,7 +310,7 @@
  });
  document.addEventListener('change',e=>{if(e.target.id==='ratioSelect'){state.ratio=e.target.value;state.trainDone=false;state.unlearnDone=false;resetAgent();renderDemo();toast('遗忘比例已更新，后续演示状态重置')}});
  $('#hamburger').addEventListener('click',()=>{$('#sidebar').classList.toggle('open');$('#mobileOverlay').classList.toggle('on')});$('#mobileOverlay').addEventListener('click',()=>{$('#sidebar').classList.remove('open');$('#mobileOverlay').classList.remove('on')});
- renderOverview();renderTeam();renderMilestones();renderArch();renderModules();
+ renderOverview();renderMilestones();renderArch();renderModules();
 })();
 </script>
 </body>

@@ -1,5 +1,5 @@
 name: Module task / feature
-about: A scoped, testable development task for RecForgetBench
+about: A scoped, testable development task for AfterRec
 labels: [enhancement]
 body:
   - type: dropdown
@@ -7,9 +7,9 @@ body:
     attributes:
       label: Module
       options:
-        - A - Dataset and recommendation
-        - B - Unlearning and evaluation
-        - C - Web and integration
+        - Dataset and recommendation
+        - Unlearning and evaluation
+        - Web and integration
         - Shared contract
         - Research simulation protocol
     validations:
