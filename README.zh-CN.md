@@ -1,109 +1,83 @@
-# RecForgetBench：推荐系统遗忘 × LLM Agent 评测平台
+# AfterRec
 
-[English README](README.md) · [系统架构](docs/architecture/OVERVIEW.md) · [模块分工](docs/team/OWNERSHIP.md) · [第一批开发任务](docs/team/FIRST_ISSUES.md)
+**从模型遗忘指标，到用户实际看到的推荐。**
 
-> **当前为仓库初始骨架，不是完整平台。** `frontend/index.html` 是离线交互演示，
-> 其中的训练结果、商品和 Agent 行为均为**模拟示例**，不可作为真实实验结果。
+[English](README.md) · [整体架构](docs/architecture/OVERVIEW.zh-CN.md) · [开发路线](docs/ROADMAP.md) · [参与贡献](CONTRIBUTING.md)
 
-## 一、项目介绍
+当用户要求推荐系统删除某段历史行为后，后续推荐究竟发生了什么变化？
 
-本项目计划建设一个**可视化、可复现、可扩展**的推荐系统 Unlearning 评测平台。
-通过统一的实验流程整合数据管理、推荐模型训练、Unlearning、静态指标、
-多轮 LLM Agent 用户模拟和结果分析。
+现有推荐遗忘研究通常关注推荐精度、遗忘效果、隐私攻击和运行效率。**AfterRec** 希望在这些传统评测之外，引入**多轮用户 Agent 模拟**，观察遗忘后的推荐结果如何在连续交互中呈现给用户。
 
-核心科研问题是：传统推荐系统遗忘指标与用户感知的遗忘体验之间存在怎样的关系？
-当用户要求删除特定交互后，推荐系统是否仍会展示用户能够感知到的间接语义关联？
+例如，用户要求删除篮球商品的历史交互，模型的推荐分数可能已经改变，但在后续浏览中仍可能出现篮球主题商品。仅凭这种曝光，无法判断模型是否完成了技术层面的数据遗忘。AfterRec 将两类结果分开评估，再研究它们之间的关系。
 
-**研究必须区分两类结论：**
+> **当前状态：MVP 开发前期。** 仓库已包含基础 API、部分指标函数、最小模拟运行框架和可交互的**模拟数据原型**。真实模型训练、遗忘实验闭环以及经过验证的 LLM 用户评测仍在开发计划中。
 
-1. **技术层面的数据遗忘：** 指定交互对模型的影响是否被移除，应与 Retain Set 上
-   从头训练的 Retrain 基准及其他指标比较。
-2. **用户感知遗忘：** 在实际推荐曝光和交互过程中，用户是否仍接触到与遗忘目标
-   相关的内容，以及 Agent 是否能可靠预测人类判断。
+## AfterRec 能做什么
 
-某次推荐仍包含关联商品，不自动意味着模型技术上没有完成 Machine Unlearning。
+- **统一对比遗忘方法：** 管理数据划分和遗忘请求，在相同协议下比较 Original、从头训练的 Retrain 与 Unlearned 模型。
+- **传统指标评测：** 评估推荐质量与遗忘相关表现，并逐步接入隐私和效率指标。
+- **多轮用户模拟：** Agent 根据展示的推荐结果执行点击、不感兴趣、跳过等行为，记录每轮曝光与反馈。
+- **结果分析与复现：** 对照模型指标和交互轨迹，保存必要的实验配置、数据版本与运行记录。
 
-## 二、六个核心模块与分工
+第一版面向**电商推荐场景**，计划通过 RecBole 接入 BPR-MF、LightGCN 等模型；后续逐步支持更多推荐模型、遗忘算法和 Agent 策略。
 
-| 模块 | 职责 | 负责人 |
-| --- | --- | --- |
-| 1. 数据集管理 | 数据导入、预处理、数据版本、训练/验证/测试及遗忘/保留划分 | 学生 A |
-| 2. 推荐模型与训练 | RecBole 集成、BPR/LightGCN、训练、加载、Top-K 推荐 | 学生 A |
-| 3. Unlearning | 遗忘请求、Retrain 参考模型、后续近似遗忘算法 | 学生 B |
-| 4. 静态评测 | Recall/NDCG、遗忘诊断、效率和可复现实验比较 | 学生 B |
-| 5. Agent 动态模拟 | 用户画像、遗忘意图、多轮动作、会话状态、轨迹记录 | 学生 C 负责运行框架，项目负责人负责科研算法 |
-| 6. Web 与实验管理 | 前后端、任务执行、结果展示、系统集成 | 学生 C |
+## 整体流程
 
-项目负责人负责总体架构、研究问题、Agent 科研设计、阶段验收；
-**不负责日常代码审查和 Git 冲突解决**。学生 C 负责协调集成，A、B 各自
-对算法模块和科研正确性负责。
+```mermaid
+flowchart LR
+    D["数据集与划分"] --> M["训练推荐模型"]
+    M --> O["Original"]
+    O --> F["遗忘请求"]
+    F --> R["Retrain"]
+    F --> U["Unlearned"]
+    O --> E["传统指标评测"]
+    R --> E
+    U --> E
+    O --> S["Agent 多轮模拟"]
+    R --> S
+    U --> S
+    E --> V["结果对比与分析"]
+    S --> V
+```
 
-## 三、当前仓库已经包含什么？
+各实验组使用一致的用户、商品范围和评测设置。**用户感知遗忘是一条独立的研究维度**，不能代替技术遗忘验证。
 
-**可运行：**
+更多细节见[整体架构设计](docs/architecture/OVERVIEW.zh-CN.md)。
 
-- `frontend/index.html`：可离线打开的交互式产品原型，仅用于团队展示。
-- `backend/src/recforgetbench/api/`：FastAPI 启动、健康检查与能力状态查询。
-- `core/validation.py`：数据划分与遗忘/保留集合的基本正确性检查。
-- `evaluation/metrics.py`：可单独测试的基础 Recall@K/NDCG@K 函数。
-- `simulation/`：Agent 动作协议和最小多轮执行器，当前仅以测试夹具运行。
-- `AGENTS.md`、`CLAUDE.md`、模块级规则：统一 AI Coding 的行为约束。
-- `.github/`：CI、Issue 与 PR 协作模板。
+## 当前可以体验什么
 
-**尚未实现：** 真实的 RecBole 训练、Retrain 遗忘、完整 Web 工作流、
-真实数据集评测以及经过人类校准的 LLM Agent。必须由后续开发实现和验证。
+| 已提供 | 后续实现 |
+| --- | --- |
+| FastAPI 服务与健康检查、能力状态接口 | 真实 RecBole 训练和 Top-K 推荐 |
+| 数据划分校验、独立可测的 Recall/NDCG 函数 | Retrain 与其他遗忘算法的完整实验 |
+| 最小 Agent 动作协议与回合运行框架 | Agent 与真实推荐模型的连续交互 |
+| 基于模拟数据的 HTML 交互原型 | 真实指标可视化和轨迹回放 |
+| | 经过人类行为校准的 LLM Agent 与感知遗忘指标 |
 
-## 四、本地运行
+### 体验当前原型
 
-推荐使用 Python 3.11 创建虚拟环境，先安装基础包（当前不需要 GPU 或 RecBole）：
+需要 Python 3.10+ 和现代浏览器。在仓库根目录运行：
 
 ```bash
 python -m pip install -e '.[dev]'
 python -m pytest -q
-python scripts/verify_scaffold.py
-python scripts/check_frontend.py
 python -m uvicorn recforgetbench.api.main:app --reload --port 8000
 ```
 
-启动后访问：
+访问 [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) 查看现有 API；直接打开 `frontend/index.html` 可以体验离线交互原型。
 
-- `http://127.0.0.1:8000/docs`：API 文档。
-- `http://127.0.0.1:8000/api/v1/health`：服务状态。
-- `http://127.0.0.1:8000/api/v1/capabilities`：功能实现状态。
+**前端展示的商品、分数和 Agent 行为均为模拟数据**，不代表真实训练、遗忘算法或 LLM 实验结果。
 
-前端原型直接双击 `frontend/index.html` 打开即可。真实模型运行环境
-由学生 A 在验证 RecBole 与 PyTorch 兼容性后单独记录。
+## 项目文档
 
-## 五、三名学生如何协作？
+- [整体架构设计](docs/architecture/OVERVIEW.zh-CN.md)（[English](docs/architecture/OVERVIEW.md)）：模块边界与端到端实验流程
+- [公共接口](docs/contracts/INTERFACES.md)：数据结构和模块对接约定
+- [Agent 模拟协议](docs/research/SIMULATION_PROTOCOL.md)：交互边界与科研有效性要求
+- [开发路线](docs/ROADMAP.md)：阶段性功能清单
+- [参与贡献](CONTRIBUTING.md)：Issue、代码提交与验证要求
 
-**统一 GitHub 仓库；每人独立电脑、独立分支；每项任务一个 Issue、一个 PR。**
+近期目标是先跑通一次**本地、可复现的完整实验**：真实推荐模型、遗忘请求、Retrain 对照、静态指标，以及明确标注为模拟行为的短程 Agent 交互。更接近真实用户的 LLM Agent 和新评测指标会在此基础上继续研究。
 
-- 学生 A 主要修改 `datasets/`、`recsys/`。
-- 学生 B 主要修改 `unlearning/`、`evaluation/`。
-- 学生 C 主要修改 `api/`、`frontend/`，并负责跨模块集成。
-- `core/`、`simulation/`、公共接口文档和 CI 属于共享部分，先协商再修改。
-- Claude Code 使用 `CLAUDE.md`，Codex 使用 `AGENTS.md`。
-- 每个 PR 必须包含实际功能、测试结果、演示方式和已知限制。
-- 学生之间进行交叉功能验证；项目负责人以 Demo、指标和复现结果验收。
+## 许可证与数据
 
-GitHub 创建及上传流程见 [`docs/team/BOOTSTRAP_GITHUB.md`](docs/team/BOOTSTRAP_GITHUB.md)。
-
-详细规范见 [`CONTRIBUTING.md`](CONTRIBUTING.md)、
-[`AGENTS.md`](AGENTS.md) 和 [`docs/team/OWNERSHIP.md`](docs/team/OWNERSHIP.md)。
-
-## 六、第一阶段开发目标
-
-**先打通真实 Pipeline，再添加复杂功能。**
-
-1. **阶段 1：** RecBole 模型训练与推荐页面，真实 Top-K 展示。
-2. **阶段 2：** Forget/Retain 划分、Retrain、静态指标对照。
-3. **阶段 3：** 连接真实推荐模型、3–5 轮 Agent 动态模拟、轨迹展示。
-4. **研究扩展：** 语义关联评测、Agent 校准、更多模型与遗忘方法。
-
-第一批任务详见 [`docs/team/FIRST_ISSUES.md`](docs/team/FIRST_ISSUES.md)。
-
-## 七、开源与数据说明
-
-仓库建议初期设为 **Private**。目前**尚未选择开放源代码许可证**，
-正式公开前由项目负责人决定。RecBole 代码与外部数据集的许可互相独立；
-不要提交数据集、模型权重、真实用户信息或 API Key。
+仓库**尚未添加软件许可证**。代码公开可见并不自动授予复用或再分发权利。RecBole 与外部数据集适用各自的许可证；本仓库不附带大型数据集或训练权重。
