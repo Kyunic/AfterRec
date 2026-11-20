@@ -1,7 +1,7 @@
 # Roadmap (aspirational, not promises)
 
 ## P0 — repository foundation (this template)
-- [x] Monorepo roles and module boundaries
+- [x] Monorepo and module boundaries
 - [x] Shared contracts and scientific constraints
 - [x] Runnable API health/capability endpoints
 - [x] Testable core split validators, ranking-metric examples, simulation state loop
