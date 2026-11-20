@@ -127,15 +127,6 @@
     <div class="surface steps" id="demoSteps"></div>
     <div class="demo-shell"><div class="surface demo-main" id="demoBody"></div><aside class="rail"><div class="surface rail-card"><h3>实验执行状态</h3><div id="runStatuses"></div></div><div class="surface rail-card"><h3>当前示例配置</h3><div id="runConfig"></div></div><div class="rail-note">演示说明：界面上的商品、分数、模型指标与用户行为全部为模拟样例，不能作为真实科研结论。正式平台需由后端实际运行实验。</div></aside></div>
    </section>
-   <section class="screen" id="screen-team">
-    <div class="pagehead"><div><div class="eyebrow">TEAM & OWNERSHIP</div><h1 class="page-title">团队分工与协作机制</h1><p>你主导科研和方向，三位独立负责开发模块。通过统一代码仓库、公共接口和阶段成果验收推进。</p></div><span class="pill green">1 Lead + 3 Developers</span></div>
-    <div class="surface team-top"><div class="team-circle"><svg><use href="#i-target"></use></svg></div><div><h3>项目维护者 / Research & Product Lead</h3><p>定义研究目标和 MVP 范围；负责 Agent 核心算法、实验协议、跨模块架构决策及最终成果验收。无需参与日常代码审查。</p></div><span class="pill green">科研核心</span></div>
-    <div class="team-grid" id="teamGrid"></div>
-    <div class="section-heading"><div><h2>模块协作与交付关系</h2><p>先固定最少量公共契约，其余内部设计由各负责人决定。</p></div></div>
-    <div class="surface handoff"><div class="handoff-flow"><span class="handoff-node">A · 推荐模型与数据</span><span class="handoff-arrow">→</span><span class="handoff-node">B · 遗忘与静态评测</span><span class="handoff-arrow">→</span><span class="handoff-node">C · 平台集成与展示</span></div><p class="small" style="margin:12px 0 0">你的 Agent 算法独立接入 C 搭建的 Simulation Runner；A 提供模型打分与推荐能力；B 提供遗忘后模型及评测记录。</p></div>
-    <div class="section-heading"><div><h2>适配 Claude Code / Codex 的工作流</h2><p>不要求负责人读源码，但必须由模块开发者为实现和实验正确性负责。</p></div></div>
-    <div class="collab-list"><div class="collab-card"><div class="num">01 / PLAN</div><strong>任务与接口先行</strong><p>每项 GitHub Issue 明确范围、输入输出、验收条件。</p></div><div class="collab-card"><div class="num">02 / BUILD</div><strong>AI 辅助独立开发</strong><p>同一仓库，各自分支，不擅自修改其他模块。</p></div><div class="collab-card"><div class="num">03 / VERIFY</div><strong>测试与交叉验证</strong><p>AI Review + 自动测试 + 学生负责技术核验。</p></div><div class="collab-card"><div class="num">04 / SHIP</div><strong>每周集成验收</strong><p>可运行 Demo、实验结果和简短交付说明。</p></div></div>
-   </section>
    <section class="screen" id="screen-roadmap">
     <div class="pagehead"><div><div class="eyebrow">DELIVERY ROADMAP</div><h1 class="page-title">先打通最小闭环，再扩展科研能力</h1><p>路线图按阶段成果组织，展示计划中的能力和验收目标。</p></div><span class="pill blue">建议排期 · 可调整</span></div>
     <div class="roadmap-intro"><div class="flex-between"><div><h3>第一版目标：MVP v0.1</h3><p style="font-size:12px;margin:5px 0 0">一套在本地浏览器中完成真实推荐训练、Retrain 对照、静态评测和基础 Agent 多轮模拟的可运行平台。</p></div><button class="btn secondary xs" data-page="demo">查看目标产品 <svg><use href="#i-arrow"></use></svg></button></div></div>
@@ -171,18 +162,12 @@
   {name:'结果报告',sub:'对照与分析',icon:'file',mod:'platform'}
  ];
  const milestones=[
-  {week:'准备阶段 · 2 天',name:'模块方案与接口',tag:'Phase 0',desc:'确定负责人与 MVP 范围。学生分别提交简版模块设计及排期。',works:['完成现有 RecBole Demo 验收','创建统一 GitHub 仓库','三人统一数据与模型接口','学生提交模块方案和排期'],deliver:'一份统一接口说明 + 三份模块设计方案',lead:'你组织；A / B / C 参与'},
-  {week:'第 1 周',name:'推荐 Web Demo',tag:'Phase 1',desc:'先让真实训练得到的推荐结果出现在浏览器里。',works:['A：RecBole 训练、保存与 Top-K','B：Forget / Retain 切分与 Retrain 脚本','C：本地 Web、推荐列表页面'],deliver:'一个可选择用户、展示真实推荐结果的网页',lead:'A 主导核心；C 集成'},
-  {week:'第 2 周',name:'Unlearning 闭环',tag:'Phase 2',desc:'运行一组真正的 Original / Retrain 实验。',works:['A：商品元数据和数据映射','B：Retrain、基础静态评测','C：训练与遗忘任务页面'],deliver:'从 Web 发起遗忘实验并查看对照结果',lead:'B 主导；A / C 配合'},
-  {week:'第 3 周',name:'Agent 基础模拟',tag:'Phase 3',desc:'实现可替换的 Agent Runtime，与冻结模型多轮交互。',works:['你：明确 Agent Observation / Action','A：支持推荐分数与重排接口','B：基础轨迹统计','C：规则 Agent、会话和轨迹展示'],deliver:'模拟用户完成 3–5 轮交互并回放',lead:'你定义；C 工程落地'},
-  {week:'第 4 周',name:'集成与 MVP 发布',tag:'Phase 4',desc:'修复依赖和流程问题，整理可独立运行的本地版本。',works:['验证完整流水线','统一环境、测试与运行文档','确保其他同学能安装复现','评审下一阶段科研开发重点'],deliver:'本地可运行 MVP v0.1',lead:'C 集成；A / B 各自质量负责'}
- ];
- const teams=[
-  {name:'',tag:'Dataset + RecSys',icon:'database',desc:'负责整个推荐系统的基础能力，让其他模块可以复用真实模型。',tasks:['数据集预处理与版本','RecBole 模型训练和加载','统一 Top-K 推荐接口'],output:'交付：可独立调用的推荐引擎'},
-  {name:'',tag:'Unlearning + Evaluation',icon:'trash',desc:'负责遗忘实验的执行与指标，保障数据和实验协议正确。',tasks:['Forget / Retain 集合','Retrain 与遗忘算法接入','传统指标和实验对照'],output:'交付：可复现的遗忘评测流程'},
-  {name:'',tag:'Web + Integration',icon:'monitor',desc:'负责用户操作入口与模块连接，使整个系统可用、可演示。',tasks:['前后端 API 和本地网页','实验调度、指标与轨迹展示','Agent Runtime 工程、代码集成'],output:'交付：端到端可运行平台'}
- ];
- const state={page:'overview',selectedModule:'dataset',milestone:0,demoStep:0,model:'lightgcn',ratio:'1%',trainDone:false,unlearnDone:false,agentModel:'retrain',round:1,maxRounds:5,history:[],negativeIds:[],clickedIds:[],ended:false,autoTimer:null};
+  {week:'Foundation',name:'基础框架',tag:'P0',desc:'建立模块边界、公共接口与本地运行入口。',works:['共享数据结构与校验','基础 API 和指标函数','离线交互原型'],deliver:'可运行的仓库基础框架'},
+  {week:'Recommendation',name:'真实推荐模型',tag:'P1',desc:'接入真实数据和推荐模型训练。',works:['RecBole 模型训练与加载','真实数据划分与商品信息','API 和 Web 展示真实 Top-K'],deliver:'可重现的真实推荐结果'},
+  {week:'Unlearning',name:'遗忘评测',tag:'P2',desc:'进行 Retrain 和传统指标对照。',works:['Forget / Retain 划分','Fresh Retrain 基线','统一 Recall / NDCG 对照'],deliver:'可重现的遗忘实验报告'},
+  {week:'Simulation',name:'多轮用户模拟',tag:'P3',desc:'将 Agent 交互与真实推荐模型连接。',works:['观察、动作与会话接口','3–5 轮模拟与反馈','轨迹回放和模型对比'],deliver:'完整模拟交互轨迹'}
+  ];
+  const state={page:'overview',selectedModule:'dataset',milestone:0,demoStep:0,model:'lightgcn',ratio:'1%',trainDone:false,unlearnDone:false,agentModel:'retrain',round:1,maxRounds:5,history:[],negativeIds:[],clickedIds:[],ended:false,autoTimer:null};
  let toastTimer=null;
  function toast(msg){const e=$('#toast');e.textContent=msg;e.classList.add('on');clearTimeout(toastTimer);toastTimer=setTimeout(()=>e.classList.remove('on'),2800)}
  function nav(page){state.page=page;$$('.screen').forEach(el=>el.classList.toggle('active',el.id==='screen-'+page));$$('.nav-btn').forEach(el=>el.classList.toggle('active',el.dataset.page===page));const names={overview:'项目总览',architecture:'系统架构',modules:'功能模块',demo:'实验流程演示',roadmap:'开发路线图'};$('#crumbName').textContent=names[page]||page;$('#sidebar').classList.remove('open');$('#mobileOverlay').classList.remove('on');window.scrollTo({top:0,behavior:'auto'});if(page==='architecture')renderArch();if(page==='modules')renderModules();if(page==='demo')renderDemo();if(page==='roadmap')renderMilestones()}
@@ -196,7 +181,6 @@
   const m=modules.find(x=>x.id===state.selectedModule);
   $('#moduleDetail').innerHTML=`<span class="pill green">${m.number} / 06</span><div class="big-icon" style="margin-top:17px">${icon(m.icon)}</div><h2>${m.name}</h2><p>${m.summary}</p><div class="feature-columns"><div class="soft-panel"><h3>负责的核心功能</h3>${m.responsibilities.map(x=>`<div class="bullet-line">${x}</div>`).join('')}</div><div class="soft-panel"><h3>第一版 MVP 交付</h3>${m.mvp.map(x=>`<div class="bullet-line">${x}</div>`).join('')}</div></div><div class="soft-panel" style="margin-top:15px"><h3>后续扩展方向</h3><div class="inline-list">${m.later.map(x=>`<span>${x}</span>`).join('')}</div></div><div style="margin-top:19px"><div class="field-label">模块输入 / 输出契约（概念性）</div><div class="interface-bar mono">${m.contract}</div></div><div class="module-bottom"><button class="btn primary" data-page="demo">查看实验流程 ${icon('arrow')}</button></div>`;
  }
- function renderTeam(){ $('#teamGrid').innerHTML=teams.map(t=>`<div class="surface team-card"><div class="flex-between"><span class="team-tag">${t.tag}</span><span class="module-icon" style="width:34px;height:34px">${icon(t.icon)}</span></div><h3>${t.name}</h3><p>${t.desc}</p><div class="details">${t.tasks.map(x=>`<div class="bullet-line">${x}</div>`).join('')}</div><div style="margin-top:13px" class="pill blue">${t.output}</div></div>`).join('') }
  function renderMilestones(){
   $('#milestoneList').innerHTML=milestones.map((m,i)=>`<button class="milestone ${state.milestone===i?'active':''}" data-mile="${i}"><span class="milestone-no">${m.tag} · ${m.week}</span><h3>${m.name}</h3><p>${m.desc}</p><span class="pill ${state.milestone===i?'green':'outline'}">${state.milestone===i?'当前查看':'查看阶段详情'}</span></button>`).join('');
   const m=milestones[state.milestone];$('#milestoneDetail').innerHTML=`<div><div class="eyebrow">${m.tag} / DELIVERY</div><h2>${m.name}</h2><p class="small" style="margin:0 0 16px">${m.desc}</p>${m.works.map(w=>`<div class="feature-row">${icon('check')} <span>${w}</span></div>`).join('')}</div><div><div class="field-label">验收交付物</div><div class="deliverable">${m.deliver}</div><div class="field-label" style="margin-top:20px">阶段时间</div><span class="pill blue">${m.week}</span></div>`;
