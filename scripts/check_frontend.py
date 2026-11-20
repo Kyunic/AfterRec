@@ -32,7 +32,7 @@ class InlineScripts(HTMLParser):
 def main() -> None:
     source = Path(__file__).resolve().parents[1] / "frontend" / "index.html"
     html = source.read_text(encoding="utf-8")
-    if "</html>" not in html or "RecForgetBench" not in html:
+    if "</html>" not in html or "<title>AfterRec" not in html:
         raise SystemExit("Missing complete HTML document or project name")
     if "模拟" not in html and "演示" not in html:
         raise SystemExit("The offline demo requires a visible synthetic-data disclaimer")
