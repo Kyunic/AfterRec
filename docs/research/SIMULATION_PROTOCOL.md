@@ -1,7 +1,5 @@
 # Simulation research boundary & evaluation protocol
 
-**Scientific decisions:** Research Lead. **Runner engineering:** Student C.
-
 ## Research question
 
 When an interaction is deleted from a recommender's training set, what residual
