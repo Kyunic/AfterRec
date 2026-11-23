@@ -19,9 +19,9 @@
 | Agent 适配器 | 把当前可见商品和行为历史传给规则 Agent、本地模型或远程模型，转换它们的回答。环境负责核验回答后执行。 |
 | 轨迹存储与展示 | 保存每轮看见的商品、动作和结果。前端从事件更新画面，回放和指标计算使用同一份记录。真人记录通过单独的导入器进入回放。 |
 
-**已验证的原型**。浏览器原型能导入排序榜单、运行规则 Agent、播放同次模拟并导出 JSON。UserArena 真人轨迹可导入和回放。示例榜单用于演示，真实 BPR 推理已在独立的 RecBole 命令行作业跑通。大模型调用流程用模拟响应验证过。
+**已验证的原型**。浏览器原型能导入排序榜单、运行规则 Agent、播放同次模拟并导出 JSON。可导入外部真人会话轨迹并回放。示例榜单用于演示，独立命令行作业已用于验证模型推理。大模型调用流程用模拟响应验证过。
 
-**首版后端要补齐**。接推荐模块的服务，把任务运行、动作校验和轨迹保存放到服务端，并验证真实 Agent。沿用 AfterRec 的 FastAPI、Pydantic 和 Python 模拟骨架，复用已有回放逻辑。推荐模块继续用 RecBole 加载模型和打分。 [AfterRec 共享接口](../../docs/contracts/INTERFACES.md) · [模拟运行器](../../backend/src/recforgetbench/simulation/runner.py) · [RecBole](https://github.com/RUCAIBox/RecBole)
+**首版后端要补齐**。接推荐模块的服务，把任务运行、动作校验和轨迹保存放到服务端，并验证真实 Agent。沿用 AfterRec 的 FastAPI、Pydantic 和 Python 模拟骨架，复用已有回放逻辑。推荐模块通过统一适配器加载模型并打分。 [AfterRec 共享接口](../../docs/contracts/INTERFACES.md) · [模拟运行器](../../backend/src/recforgetbench/simulation/runner.py)
 
 ## 2 推荐模型怎么接入
 
@@ -90,14 +90,14 @@ step(t01, o1, a01, viewed=[p01:4], decision=next) → event_seq=2, observation=o
 
 ## 6 真人轨迹从哪里来以及怎样处理
 
-真人回放接 UserArena 官方 `data/sessions.jsonl`，现有原型已经读入其中 535 个会话。文件每行是一场会话，`session_id` 是会话编号，`feed_catalog` 是商品资料，`trajectory` 是按发生顺序排列的动作与观察记录。另保留通用 JSON 导入入口，换数据源时通过转换器统一格式。 [UserArena 数据说明](https://github.com/RecGPT-Team/UserArena#data-and-environment)
+真人回放支持形如 `data/sessions.jsonl` 的会话记录，独立原型已经使用会话记录验证回放。文件每行是一场会话，`session_id` 是会话编号，`feed_catalog` 是商品资料，`trajectory` 是按发生顺序排列的动作与观察记录。另保留通用 JSON 导入入口，换数据源时通过转换器统一格式。
 
 ```text
 输入示例：action=scroll_down, scroll_top=0, scroll_delta_px=320
 转换结果：type=scroll, direction=down, offset_before_px=0, delta_px=320
 ```
 
-示例中的用户从 0 像素处向下滚动了 320 像素。本步按 `visible_items` 展示动作前看到的商品，动作后的画面由后续记录提供。`gui_image` 是该步的重建截图，`feed_long_image` 是会话的整页长图。没图时用商品资料还原，缺少时间时按步骤等间隔播放。保留原始动作名和文件来源，便于检查转换。UserArena 源数据按非商业研究许可单独获取，本仓库使用虚构例子。 [UserArena 数据许可](https://github.com/RecGPT-Team/UserArena/blob/main/LICENSE)
+示例中的用户从 0 像素处向下滚动了 320 像素。本步按 `visible_items` 展示动作前看到的商品，动作后的画面由后续记录提供。`gui_image` 是该步的重建截图，`feed_long_image` 是会话的整页长图。没图时用商品资料还原，缺少时间时按步骤等间隔播放。保留原始动作名和文件来源，便于检查转换。外部真人记录须按数据来源的许可要求单独获取，本仓库使用虚构示例。
 
 真人与 Agent 并排回放用于观察行为差异。计算动作频率或行为相似度前，先选任务和商品场景可比的会话，并统一动作粒度。只有曝光画面的记录可以播放，统计行为时按实际动作计数。
 
