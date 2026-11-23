@@ -9,7 +9,7 @@
 - [x] Offline product-concept prototype (all demonstration data synthetic)
 
 ## P1 — real recommendation baseline
-- [ ] Verified RecBole dependency environment and adapter
+- [ ] Verified recommendation training environment and model adapter
 - [ ] One real Amazon-like dataset split and item metadata
 - [ ] Train, checkpoint reload and Top-K recommendation through API
 - [ ] Basic functional Web view backed by real recommendations
