@@ -123,7 +123,7 @@
     <div class="module-screen"><div class="surface module-list" id="moduleList"></div><div class="surface module-detail" id="moduleDetail"></div></div>
    </section>
    <section class="screen" id="screen-demo">
-    <div class="pagehead"><div><div class="eyebrow">INTERACTIVE PRODUCT DEMO</div><h1 class="page-title">完整实验流程演示</h1><p>沿六个步骤查看未来平台的操作体验。训练、评测数值和 Agent 行为为本地模拟，不调用真实 RecBole 或 LLM。</p></div><button class="btn secondary" id="loadSampleBtn"><svg><use href="#i-play"></use></svg> 一键载入示例实验</button></div>
+    <div class="pagehead"><div><div class="eyebrow">INTERACTIVE PRODUCT DEMO</div><h1 class="page-title">完整实验流程演示</h1><p>沿六个步骤查看未来平台的操作体验。训练、评测数值和 Agent 行为为本地模拟，不调用真实 推荐引擎 或 LLM。</p></div><button class="btn secondary" id="loadSampleBtn"><svg><use href="#i-play"></use></svg> 一键载入示例实验</button></div>
     <div class="surface steps" id="demoSteps"></div>
     <div class="demo-shell"><div class="surface demo-main" id="demoBody"></div><aside class="rail"><div class="surface rail-card"><h3>实验执行状态</h3><div id="runStatuses"></div></div><div class="surface rail-card"><h3>当前示例配置</h3><div id="runConfig"></div></div><div class="rail-note">演示说明：界面上的商品、分数、模型指标与用户行为全部为模拟样例，不能作为真实科研结论。正式平台需由后端实际运行实验。</div></aside></div>
    </section>
@@ -147,7 +147,7 @@
  const escapeHtml=(v)=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const modules=[
   {id:'dataset',number:'01',name:'数据集管理',en:'DATA MANAGEMENT',icon:'database',summary:'统一管理用户行为、商品信息、数据切分与遗忘请求。',responsibilities:['导入并处理电商交互数据','统一用户 / 商品 ID 映射','生成训练、验证、测试和遗忘数据划分'],mvp:['一个 Amazon 混合品类演示子集','固定的 Train / Val / Test 划分','Forget / Retain 数据构造'],later:['更多领域和多模态元数据','复杂用户级、概念级遗忘任务'],contract:'输入：原始用户商品交互 → 输出：DatasetVersion、SplitVersion、ForgetSet'},
-  {id:'recsys',number:'02',name:'推荐模型与训练',en:'RECOMMENDATION ENGINE',icon:'cpu',summary:'复用 RecBole，完成模型训练、保存、加载和真实 Top-K 推荐。',responsibilities:['通过统一接口调用 RecBole 模型','管理训练配置与模型 Checkpoint','向其他模块提供推荐列表与候选打分'],mvp:['BPR-MF 或 LightGCN 的稳定训练','真实用户 Top-K 推荐与商品信息','模型保存、重载及基础训练指标'],later:['更多经典和序列推荐模型','算法注册与批量训练'],contract:'输入：DatasetVersion、ModelConfig → 输出：ModelArtifact、Top-K 推荐'},
+  {id:'recsys',number:'02',name:'推荐模型与训练',en:'RECOMMENDATION ENGINE',icon:'cpu',summary:'复用 推荐引擎，完成模型训练、保存、加载和真实 Top-K 推荐。',responsibilities:['通过统一接口调用 推荐引擎 模型','管理训练配置与模型 Checkpoint','向其他模块提供推荐列表与候选打分'],mvp:['BPR-MF 或 LightGCN 的稳定训练','真实用户 Top-K 推荐与商品信息','模型保存、重载及基础训练指标'],later:['更多经典和序列推荐模型','算法注册与批量训练'],contract:'输入：DatasetVersion、ModelConfig → 输出：ModelArtifact、Top-K 推荐'},
   {id:'unlearning',number:'03',name:'Unlearning 执行',en:'UNLEARNING ENGINE',icon:'trash',summary:'在统一的遗忘数据和实验协议下执行数据遗忘算法。',responsibilities:['构造并验证 Retain / Forget 集合','执行 Retrain 和后续遗忘算法','记录遗忘后模型、运行配置与耗时'],mvp:['Retrain 作为核心对照方法','Original / Retrain 两类模型管理','遗忘任务执行和结果记录'],later:['接入经验证的近似遗忘方法','支持分片式和图结构专用算法'],contract:'输入：Original Model、ForgetRequest → 输出：UnlearnedArtifact、RunLog'},
   {id:'evaluation',number:'04',name:'传统静态评测',en:'STATIC EVALUATION',icon:'chart',summary:'统一测量推荐效用、遗忘相关表现和执行效率。',responsibilities:['规范相同的评测用户与候选商品集合','计算推荐指标和遗忘实验统计','比较 Original、Retrain 与后续遗忘模型'],mvp:['Recall@10 / NDCG@10','基础遗忘集表现与执行时间','模型对照表和实验结果导出'],later:['MIA 等隐私攻击评测','更多任务、统计检验与效率指标'],contract:'输入：Models、EvaluationProtocol → 输出：Metrics、EvaluationReport'},
   {id:'agent',number:'05',name:'Agent 动态模拟',en:'USER SIMULATION',icon:'bot',summary:'模拟用户在遗忘后接收推荐、执行行为并影响后续展示的过程。',responsibilities:['定义 Agent 观察与动作的统一接口','驱动多轮推荐、反馈和短期状态更新','记录完整轨迹并对比用户感知残留'],mvp:['规则 Agent + 3–5 轮交互','点击 / 跳过 / 不感兴趣 / 退出','轨迹日志和初步关联展示'],later:['LLM Agent 与长期用户记忆','语义残留指标、真人标注校准'],contract:'输入：AgentPersona、Model、Scenario → 输出：InteractionTrace、DynamicMetrics'},
@@ -155,7 +155,7 @@
  ];
  const pipeline=[
   {name:'数据准备',sub:'数据与遗忘集',icon:'database',mod:'dataset'},
-  {name:'模型训练',sub:'RecBole / Top-K',icon:'cpu',mod:'recsys'},
+  {name:'模型训练',sub:'推荐引擎 / Top-K',icon:'cpu',mod:'recsys'},
   {name:'执行遗忘',sub:'Retrain / 算法',icon:'trash',mod:'unlearning'},
   {name:'静态评测',sub:'Recall / NDCG',icon:'chart',mod:'evaluation'},
   {name:'Agent 模拟',sub:'多轮反馈',icon:'bot',mod:'agent'},
@@ -163,7 +163,7 @@
  ];
  const milestones=[
   {week:'Foundation',name:'基础框架',tag:'P0',desc:'建立模块边界、公共接口与本地运行入口。',works:['共享数据结构与校验','基础 API 和指标函数','离线交互原型'],deliver:'可运行的仓库基础框架'},
-  {week:'Recommendation',name:'真实推荐模型',tag:'P1',desc:'接入真实数据和推荐模型训练。',works:['RecBole 模型训练与加载','真实数据划分与商品信息','API 和 Web 展示真实 Top-K'],deliver:'可重现的真实推荐结果'},
+  {week:'Recommendation',name:'真实推荐模型',tag:'P1',desc:'接入真实数据和推荐模型训练。',works:['推荐引擎 模型训练与加载','真实数据划分与商品信息','API 和 Web 展示真实 Top-K'],deliver:'可重现的真实推荐结果'},
   {week:'Unlearning',name:'遗忘评测',tag:'P2',desc:'进行 Retrain 和传统指标对照。',works:['Forget / Retain 划分','Fresh Retrain 基线','统一 Recall / NDCG 对照'],deliver:'可重现的遗忘实验报告'},
   {week:'Simulation',name:'多轮用户模拟',tag:'P3',desc:'将 Agent 交互与真实推荐模型连接。',works:['观察、动作与会话接口','3–5 轮模拟与反馈','轨迹回放和模型对比'],deliver:'完整模拟交互轨迹'}
   ];
@@ -242,10 +242,10 @@
     <div class="sample-box"><div class="overline">FORGET REQUEST / 任务示例</div><p><strong>用户 U-037：</strong>删除训练集中与篮球相关的历史交互。Agent 知晓用户的遗忘意图，但推荐模型不额外接收语义过滤指令。</p><div class="sample-journey"><span>🏀 篮球训练用球</span><b>+</b><span>🎽 篮球护腕</span><b>→</b><span>Forget Set</span></div></div>
     <div class="field-row"><div><span class="field-label">遗忘任务类型</span><div class="input" style="color:#6d8790;background:#f8fafb">Interaction-wise（交互级）</div></div><div><label class="field-label" for="ratioSelect">遗忘比例（仅影响演示配置）</label><select id="ratioSelect" class="input"><option value="1%" ${state.ratio==='1%'?'selected':''}>1%</option><option value="5%" ${state.ratio==='5%'?'selected':''}>5%</option></select></div></div>
     <div class="action-note">这里演示的是从训练交互中选择并删除指定数据，不是直接给推荐模型添加“禁止推荐篮球”的过滤规则。</div>${demoFooter(false,true)}`}
- function demoStep1(){return `${demoHeader('02 · 推荐模型训练','通过统一接口调用 RecBole，训练并保存可供推荐与遗忘使用的原始模型。')}
+ function demoStep1(){return `${demoHeader('02 · 推荐模型训练','通过统一接口调用 推荐引擎，训练并保存可供推荐与遗忘使用的原始模型。')}
     <span class="field-label">选择模型</span><div class="choice-cards"><button class="choice-card ${state.model==='lightgcn'?'selected':''}" data-model="lightgcn"><div><h3>LightGCN</h3><p>基于图传播的协同过滤模型</p></div><span class="radio-mark"></span></button><button class="choice-card ${state.model==='bpr'?'selected':''}" data-model="bpr"><div><h3>BPR-MF</h3><p>矩阵分解与成对排序</p></div><span class="radio-mark"></span></button></div>
     <div class="field-row"><div><span class="field-label">Embedding 维度</span><div class="input" style="background:#f8fafb">64</div></div><div><span class="field-label">Random Seed</span><div class="input" style="background:#f8fafb">42</div></div></div>
-    <div class="sample-box"><div class="overline">MODEL ADAPTER</div><p>接口负责训练、保存、加载、用户 Top-K 推荐。前端不直接访问 RecBole 内部对象；实验产物与数据映射同时保存。</p></div>
+    <div class="sample-box"><div class="overline">MODEL ADAPTER</div><p>接口负责训练、保存、加载、用户 Top-K 推荐。前端不直接访问 推荐引擎 内部对象；实验产物与数据映射同时保存。</p></div>
     <button class="btn primary" id="trainMock" ${state.trainDone?'disabled':''}>${icon(state.trainDone?'check':'play')} ${state.trainDone?'演示训练已完成':'模拟运行模型训练'}</button>
     ${state.trainDone?`<div class="run-result">${icon('check')}<div><h3>训练完成 · ${state.model==='lightgcn'?'LightGCN':'BPR-MF'}</h3><p>已生成模拟 ModelArtifact 和训练日志。此为界面流程演示，无真实训练计算。</p></div></div>`:''}${demoFooter(true,true)}`}
  function demoStep2(){return `${demoHeader('03 · 执行 Unlearning','基于固定遗忘请求执行算法，并生成与原始模型对应的遗忘后模型。')}
