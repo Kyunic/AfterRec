@@ -9,7 +9,7 @@ Read the [README](README.md), [architecture](docs/architecture/OVERVIEW.md), [sh
 ## Development workflow
 
 1. Open or select an Issue with a clear scope and acceptance criteria.
-2. Create a short-lived branch (for example, `feat/12-recbole-topk`).
+2. Create a short-lived branch (for example, `feat/12-recommend-topk`).
 3. Keep implementation changes within the relevant module. Discuss contract changes first.
 4. Add tests, including failure cases for data or evaluation changes.
 5. Open a Pull Request explaining behavior, actual test results, limitations and any new dependencies.
