@@ -76,7 +76,7 @@ Propose changes to shared contracts in an Issue, document affected consumers and
 
 ## Integration constraints
 
-- RecBole integration lives behind `recsys` protocols, not scattered across the API.
+- Recommendation framework integration belongs behind `recsys` protocols, not scattered across the API.
 - FastAPI routes orchestrate work, but do not contain training or unlearning logic.
 - Agent policies receive only the currently visible observation and permitted prior
   history; no future interactions, reference labels or hidden test outcomes.
