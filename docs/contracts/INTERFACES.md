@@ -5,8 +5,7 @@
 ## Shared identifiers and lineage
 
 Use stable string IDs (`dataset_id`, `split_id`, `model_id`, `run_id`,
-`request_id`, `user_id`, `item_id`). RecBole's internal integer IDs are adapter
-implementation details. Keep the mapping with each model artifact.
+`request_id`, `user_id`, `item_id`). Internal integer IDs used by particular model adapters are implementation details. Keep the mapping with each model artifact.
 
 The concrete typed objects are in `recforgetbench.core.contracts` and
 `recforgetbench.simulation.contracts`.
