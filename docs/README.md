@@ -4,6 +4,14 @@
 
 Read the [architecture overview](architecture/OVERVIEW.md) first. The documents below are organized by **system responsibility**, not by contributor. New design pages are placeholders for future implementation details.
 
+## Before implementation: design and interface templates
+
+Start with the [module design template](templates/DESIGN_TEMPLATE.md) ([中文](templates/DESIGN_TEMPLATE.zh-CN.md)). Confirm the goal, first-release scope, simple workflow, dependencies and measurable acceptance checks before writing the implementation.
+
+If two modules exchange data, agree on the [interface template](templates/INTERFACE_TEMPLATE.md) ([中文](templates/INTERFACE_TEMPLATE.zh-CN.md)) before building either side. Record calls, input/output types, failure behavior and integration checks in the relevant `interfaces/` file. The existing [shared contracts](contracts/INTERFACES.md) take precedence over conflicting proposals.
+
+Use the templates as guides, not forms to fill for their own sake. A short design with clear boundaries and testable outcomes is better than a long catalogue of speculative features.
+
 ## Module design
 
 | Module | Design document | What to document |
