@@ -6,11 +6,9 @@
 
 ## 开发前先统一设计和接口
 
-各模块开始开发前，请按[模块设计模板](templates/DESIGN_TEMPLATE.zh-CN.md)（[English](templates/DESIGN_TEMPLATE.md)）整理目标、第一版范围、整体流程、模块依赖及可执行的验收条件。
+开发前可参考[模块设计模板](templates/DESIGN_TEMPLATE.zh-CN.md)（[English](templates/DESIGN_TEMPLATE.md)），说明本阶段目标、整体流程、模块依赖及完成后可检查的交付结果。正文以简洁易懂为准，不要求凑字数或补齐与模块无关的章节。
 
-涉及两个模块协作或前后端对接时，按[接口模板](templates/INTERFACE_TEMPLATE.zh-CN.md)（[English](templates/INTERFACE_TEMPLATE.md)）提前确认调用方式、输入输出、异常及联调测试，并填写到对应的 `interfaces/` 文件。现有[公共协议](contracts/INTERFACES.md)已确定的内容不得在新文档中另行定义一套。
-
-模板用于把关键问题提前说清楚，不要求凑字数。未确认的内容要标明，不能直接作为开发依据。
+跨模块或前后端需要约定新接口时，使用[接口模板](templates/INTERFACE_TEMPLATE.zh-CN.md)（[English](templates/INTERFACE_TEMPLATE.md)），提前确认调用方式和必要的输入输出。已在[公共协议](contracts/INTERFACES.md)定义的字段直接引用；异常和任务状态仅在影响对接时补充。
 
 ## 模块设计
 
