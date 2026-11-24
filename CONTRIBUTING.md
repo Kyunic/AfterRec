@@ -6,7 +6,7 @@ Thanks for your interest in AfterRec. We welcome focused bug reports, reproducib
 
 Read the [README](README.md), [architecture](docs/architecture/OVERVIEW.md), [shared interfaces](docs/contracts/INTERFACES.md) and [simulation protocol](docs/research/SIMULATION_PROTOCOL.md). Check existing Issues before proposing a change.
 
-For new modules or cross-module changes, use the [design template](docs/templates/DESIGN_TEMPLATE.md) and [interface template](docs/templates/INTERFACE_TEMPLATE.md) to agree on scope, observable acceptance criteria and module boundaries before implementation. The corresponding [Chinese templates](docs/templates/DESIGN_TEMPLATE.zh-CN.md) and [interface template](docs/templates/INTERFACE_TEMPLATE.zh-CN.md) are also available.
+For new modules, the [design template](docs/templates/DESIGN_TEMPLATE.md) ([中文](docs/templates/DESIGN_TEMPLATE.zh-CN.md)) provides a short pre-development plan. When a new cross-module contract is needed, use the [interface template](docs/templates/INTERFACE_TEMPLATE.md) ([中文](docs/templates/INTERFACE_TEMPLATE.zh-CN.md)). Keep only details needed to agree on scope and inputs/outputs.
 
 ## Development workflow
 

@@ -6,11 +6,9 @@ Read the [architecture overview](architecture/OVERVIEW.md) first. The documents 
 
 ## Before implementation: design and interface templates
 
-Start with the [module design template](templates/DESIGN_TEMPLATE.md) ([中文](templates/DESIGN_TEMPLATE.zh-CN.md)). Confirm the goal, first-release scope, simple workflow, dependencies and measurable acceptance checks before writing the implementation.
+Use the [module design template](templates/DESIGN_TEMPLATE.md) ([中文](templates/DESIGN_TEMPLATE.zh-CN.md)) to clarify this iteration's scope, workflow, dependencies and observable deliverables before implementation. Keep it short; omit sections that do not help the decision.
 
-If two modules exchange data, agree on the [interface template](templates/INTERFACE_TEMPLATE.md) ([中文](templates/INTERFACE_TEMPLATE.zh-CN.md)) before building either side. Record calls, input/output types, failure behavior and integration checks in the relevant `interfaces/` file. The existing [shared contracts](contracts/INTERFACES.md) take precedence over conflicting proposals.
-
-Use the templates as guides, not forms to fill for their own sake. A short design with clear boundaries and testable outcomes is better than a long catalogue of speculative features.
+When modules or frontend/backend need a new contract, use the [interface template](templates/INTERFACE_TEMPLATE.md) ([中文](templates/INTERFACE_TEMPLATE.zh-CN.md)) to agree on the call and essential input/output. Reuse existing [shared contracts](contracts/INTERFACES.md); document lifecycle and errors only when needed by consumers.
 
 ## Module design
 
